@@ -1,0 +1,67 @@
+
+<h1>Bookings</h1>
+
+<% if current_user.admin? || current_user.customer?%>
+  <a class="btn btn-warning" <%= link_to 'New Booking', new_booking_path %></a>
+<% end %>
+
+<table class="table table-hover table-light" >
+  <thead>
+    <tr>
+      <th>Room Number</th>
+      <th>Room</th>
+      <% if current_user.admin? || current_user.staff? %>
+        <th>Customer_Name </th>
+      <% end %>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th>Status</th>
+      <!--<th>Bill Status </th>-->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |booking| %> 
+      <tr>
+        <td><%= booking.room.room_number %></td>
+        <td><%= booking.room.room_type.name %></td>
+        <% if current_user.admin? || current_user.staff? %>
+          <td><%= booking.user.name %></td>
+        <% end %>
+        <td><%= booking.check_in %></td>
+        <td><%= booking.check_out %></td>
+        <td><%= booking.status %></td>
+        <% if current_user.customer? %>
+          <td><a class="btn btn-warning"<%= link_to 'Bill',bill_booking_path(booking.id) %></a></td>
+        <%end%>
+        <td><a class="btn btn-warning"<%= link_to 'show',booking_path(booking.id) %></a></td>
+        <% if current_user.admin? || current_user.customer? %>
+        <td><a class="btn btn-warning"<%= link_to 'edit', edit_booking_path(booking.id) %></a></td>
+        <% end %>
+        <td><a class="btn btn-warning"<%= link_to 'delete',booking_path(booking.id), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %></a></td>
+        <% if current_user.admin? || current_user.staff? %>
+          <% if booking.status != 'checked_in' %>
+            <td><%= button_to 'Check In', check_in_booking_path(booking), method: :patch, data: { confirm: 'Are you sure you want to check in this guest?' } %></td>
+          <% end %>
+
+          <% if booking.status == 'checked_in' && booking.status != 'checked_out' %>
+            <td><%= button_to 'Check Out', check_out_booking_path(booking), method: :patch, data: { confirm: 'Are you sure you want to check out this guest?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <%end %>
+
+  
+</tbody>
+</table>
+<% if current_user.admin? %>
+  <a class="btn btn-warning" <%= link_to 'Back', admin_path %></a>
+<% elsif current_user.staff?%>
+  <a class="btn btn-warning" <%= link_to 'Back', staff_path %></a>
+<% else %>
+   <a class="btn btn-warning" <%= link_to 'Back', customer_path %></a>
+<% end %>

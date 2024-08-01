@@ -1,0 +1,33 @@
+<h2><%= action_name.capitalize %> Room Type </h2>
+<hr>
+
+<%= form_with(model: @room_type, local:true) do |form| %>
+    <% if @room_type.errors.any? %>
+    <div id="error_explantion">
+        <h2><%= pluralize(@room_type.errors.count, "error") %> prohibited this room type from being saved:</h2>
+
+        <ul>
+        <% @room_type.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+   <div class="mb-3">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+   </div>
+
+   <div class="mb-3">
+    <%= form.label :rate %>
+    <%= form.number_field :rate, step: :any %>
+   </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br>
+
+<a class="btn btn-warning"<%= link_to 'Back', room_types_path %></a>

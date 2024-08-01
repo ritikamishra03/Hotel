@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+   <a class="nav-link active" aria-current="page <%= link_to 'Home',customer_path %></a>
+  </li>
+  <li class="nav-item">
+    <% if current_user.customer? %>
+        <a class="nav-link"<%= link_to 'Booking',new_booking_path %></a>
+    <% end %>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Profile</a>
+    <ul class="dropdown-menu">
+      <li>
+        <% if signed_in? %>
+          <a class="nav-link "<%= link_to 'Logout',logout_path %></a>
+        <% end %>
+      </li>
+       <a class="nav-link "<%= link_to 'Profile',user_path(current_user) %></a>
+      </li>
+    </ul>
+  </li>
+
+  </ul>
+  </head>
+
+  <br><br><br>
+
+  <body>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <%= image_tag("single.jpeg")%>
+      <div class="card-body">
+        <h5 class="card-title">Single Room</h5>
+        <p class="card-text">Price: 700 </p>
+        <% if current_user.customer? %>
+            <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <%= image_tag("twin.jpeg")%>
+       <div class="card-body">
+        <h5 class="card-title">Twin Or Double Room</h5>
+        <p class="card-text">Price: 1500 </p>
+        <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <%= image_tag("queen.jpeg")%>
+       <div class="card-body">
+        <h5 class="card-title">Queen Rooms </h5>
+        <p class="card-text">Price: 2000 </p>
+        <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <%= image_tag("tripleroom.jpeg")%>
+       <div class="card-body">
+        <h5 class="card-title">Triple Bed Rooms </h5>
+        <p class="card-text">Price: 2800 </p>
+        <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <%= image_tag("studio.jpeg")%>
+       <div class="card-body">
+        <h5 class="card-title">studio Rooms </h5>
+        <p class="card-text">Price: 2500 </p>
+        <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <%= image_tag("suite.jpeg")%>
+       <div class="card-body">
+        <h5 class="card-title">Suites </h5>
+        <p class="card-text">Price: 5000 </p>
+        <a class="btn btn-primary"<%=link_to 'Book Now',new_booking_path %></>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active d-block w-100">
+      <%= image_tag("single.jpeg")%>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+  </body>
+</html>

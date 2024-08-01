@@ -1,0 +1,13 @@
+<p>Hello, <%= @user.email %>!</p>
+
+<p>Thank you for staying with us. Here are the details of your booking:</p>
+
+<p>Room Number: <%= @booking.room.room_number %></p>
+<p>Check-in Date: <%= @booking.check_in %></p>
+<p>Check-out Date: <%= @booking.check_out%></p>
+<p>Total Amount: $<%= @booking.total_cost %></p>
+
+<p>We hope to see you again soon!</p>
+
+<p>Best regards,</p>
+<p>Your Hotel Name</p>

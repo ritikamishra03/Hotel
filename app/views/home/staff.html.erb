@@ -1,0 +1,29 @@
+<h1>Welcome To Staff Pannel</h1>
+<% if current_user.staff?%>
+    <p>Hello, <%= current_user.name %>!</p>
+<%end%>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">BOOKING</h5>
+        <p class="card-text">Do Booking And Check Guest Check_In And Check_Out.</p>
+        <a class="btn btn-primary" <%=link_to "Booking",bookings_path  %></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Available Rooms</h5>
+        <p class="card-text">Room that are available for booking.</p>
+        <a class="btn btn-primary" <%=link_to "Available Room",check_availability_bookings_path  %></a>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<br>
+<a class="btn btn-warning"<%= link_to 'logout',logout_path %>

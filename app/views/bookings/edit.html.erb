@@ -1,0 +1,43 @@
+<h1><%= action_name.capitalize %> Booking</h1>
+
+<%= form_with(model: @booking, local: true) do |form| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 ">
+    <%= form.label :room_id %>
+    <%= form.collection_select :room_id, @rooms, :id, :room_number,Prompt:"Select Room" %>
+  </div>
+
+  <div class="mb-3 ">
+    <%= form.label :room_id %>
+    <%= form.collection_select :room_type_id, @room_types, :id, :name %>
+  </div>
+  
+
+  <div class="mb-3">
+    <%= form.label :check_in %>
+    <%= form.datetime_select :check_in %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :check_out %>
+    <%= form.datetime_select :check_out %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br>
+
+<a class="btn btn-warning" <%= link_to 'Back', bookings_path %></a>

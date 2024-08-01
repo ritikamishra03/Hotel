@@ -1,0 +1,13 @@
+<h2>Enter OTP</h2>
+
+<%= form_with url: otp_path, method: :post, local: true do |f| %>
+  <div class="field">
+    <%= f.label :otp %>
+    <%= f.text_field :otp %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Verify' %>
+    <%= link_to 'Back', root_path %>
+  </div>
+<% end %>

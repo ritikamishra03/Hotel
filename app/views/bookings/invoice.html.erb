@@ -1,0 +1,50 @@
+<h1>Invoice for Booking</h1>
+
+<p>
+  <strong>Room Number:</strong>
+  <%= @booking.room.room_number %>
+</p>
+
+<p>
+  <strong>Check-in Date:</strong>
+  <%= @booking.check_in %>
+</p>
+
+<p>
+  <strong>Check-out Date:</strong>
+  <%= @booking.check_out %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @booking.duration %> nights
+</p>
+
+<p>
+  <strong>Rate per Night:</strong>
+  <%= @booking.room.room_type.rate %>
+</p>
+
+<p>
+  <strong>Total Cost:</strong>
+  <%= @booking.total_cost %>
+</p>
+
+<p>
+  <strong>Invoice Status:</strong>
+  <%= @invoice.status %>
+</p>
+<%= form_with(model: @invoice, url: update_invoice_booking_path(@booking), local: true) do |form| %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select :status, [['Unpaid', 'unpaid'], ['Paid', 'paid']] %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "Update Invoice" %>
+    </div>
+  <% end %>
+  
+  <%= link_to 'Back to Bookings', bookings_path %>
+  
+  

@@ -1,0 +1,44 @@
+<h1>Welcome To Admin Pannel</h1>
+<% if current_user.admin?%>
+    <p>Hello, <%= current_user.name %>!</p>
+<%end%>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">BOOKING</h5>
+        <p class="card-text">Do Booking And Check Guest Check_In And Check_Out.</p>
+        <a class="btn btn-primary" <%=link_to "Booking",bookings_path  %></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">USERS And STAFF</h5>
+        <p class="card-text">Manage users and staff.</p>
+        <a class="btn btn-primary" <%=link_to "Users",users_path  %></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ROOM</h5>
+        <p class="card-text">Manage the rooms</p>
+        <a class="btn btn-primary" <%=link_to "Room",rooms_path  %></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ROOM TYPES</h5>
+        <p class="card-text">Manage rooms types and their rating.</p>
+        <a class="btn btn-primary" <%=link_to "Room Type",room_types_path  %></a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<a class="btn btn-warning"<%= link_to 'logout',logout_path %>
