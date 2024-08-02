@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
     before_action :set_booking, only: [:show, :edit, :update, :destroy, :check_in, :check_out,:bill]
     before_action :authorize_user, only: [:new, :create]
     before_action :authorize_booking_owner_or_admin, only: [:edit, :update, :destroy]
-    before_action :authorize_staff_or_admin, only: [:check_in, :check_out]
+    before_action :authorize_staff_or_admin, only: [:check_in, :check_out,:index]
     
     def index
       @bookings = current_user.admin? || current_user.staff? ? Booking.all : current_user.bookings
