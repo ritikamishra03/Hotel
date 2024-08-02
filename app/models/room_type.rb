@@ -1,7 +1,9 @@
-class RoomType < ApplicationRecord
-    has_many :rooms
-    has_many :bookings, through: :rooms
+# frozen_string_literal: true
 
-    validates :name, presence:true
-    validates :rate, presence:true
+class RoomType < ApplicationRecord
+  has_many :rooms
+  has_many :bookings, through: :rooms
+
+  validates :name, presence: true
+  validates :rate, presence: true
 end
