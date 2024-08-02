@@ -8,6 +8,10 @@ class Users::SessionsController < Devise::SessionsController
     yeild resource if block_given?
     if current_user.admin?
       redirect_to admin_path
+    elsif current_user.staff?
+      redirect_to staff_path
+    else
+      redirect_to customer_path
     end
   end
 end
